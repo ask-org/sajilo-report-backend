@@ -13,3 +13,4 @@ app.get("/", (req, res) => {
     "The Backend app is running for Creating the system for makeing report files"
   );
 });
+app.use("/reports", require("./route/reportmanage"));
