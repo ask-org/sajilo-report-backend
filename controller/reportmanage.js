@@ -12,9 +12,11 @@ const createReports = async (req, res) => {
     const { reports } = req.body;
     const newReport = { reports };
     const report = await postReports(newReport);
-    res.status(201).json(report);
+    res.status(201).json(report); // Respond with the inserted data
   } catch (error) {
-    res.status(400).json({ error: "error while inserting reports" });
+    console.error("Error while inserting reports:", error);
+    res.status(400).json({ error: "Error while inserting reports" });
   }
 };
+
 module.exports = { fetchReports, createReports };

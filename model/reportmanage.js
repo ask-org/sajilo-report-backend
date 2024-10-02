@@ -13,8 +13,13 @@ const getReports = async () => {
 const postReports = async (reportData) => {
   const { data, error } = await supabase
     .from("reportgenerator")
-    .insert([reportData]);
-  if (error) throw new Error(error.message);
+    .insert([reportData])
+    .select(); // Add this to return the inserted data
+  if (error) {
+    console.error("Supabase insert error:", error);
+    throw new Error(error.message);
+  }
   return data;
 };
+
 module.exports = { getReports, postReports };
