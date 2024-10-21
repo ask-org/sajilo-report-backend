@@ -9,8 +9,8 @@ const fetchReports = async (req, res) => {
 };
 const createReports = async (req, res) => {
   try {
-    const { reports } = req.body;
-    const newReport = { reports };
+    const { heading, body } = req.body;
+    const newReport = { heading, body };
     const report = await postReports(newReport);
     res.status(201).json(report); // Respond with the inserted data
   } catch (error) {
