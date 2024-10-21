@@ -9,7 +9,9 @@ const fetchReports = async (req, res) => {
 };
 const createReports = async (req, res) => {
   try {
-    const { heading, body, figure } = req.body;
+    const { heading, body } = req.body;
+    const figure = req.file?.filename;
+    console.log(figure, "figure file");
     const newReport = { heading, body, figure };
     const report = await postReports(newReport);
     res.status(201).json(report); // Respond with the inserted data
