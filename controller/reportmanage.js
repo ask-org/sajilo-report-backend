@@ -9,10 +9,10 @@ const fetchReports = async (req, res) => {
 };
 const createReports = async (req, res) => {
   try {
-    const { heading, body } = req.body;
+    const { heading, body, sub_heading } = req.body;
     const figure = req.file?.filename;
     console.log(figure, "figure file");
-    const newReport = { heading, body, figure };
+    const newReport = { heading, body, figure, sub_heading };
     const report = await postReports(newReport);
     res.status(201).json(report); // Respond with the inserted data
   } catch (error) {
